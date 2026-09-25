@@ -19,7 +19,7 @@ Steps: 1 Category (THF / Octane, or Multi-gas) → 2 Mixture → 3 Cylinder size
 ## Needs your input or review
 | # | Item | Detail |
 |---|---|---|
-| 1 | **Catalogue PDF** | The links point to `assets/calibration-gas-catalogue-en.pdf`, which is not supplied yet, so the links return 404 until it is added (≤ 5 MB). |
+| 1 | **Catalogue PDF** | ✅ Supplied on 2026-09-25 (`Calibration-Gas-Catalogue-en.pdf`, 1.1 MB, within the 5 MB limit), saved as `assets/calibration-gas-catalogue-en.pdf`. English only; add `-vi.pdf` if a Vietnamese version is made. |
 | 2 | **USD prices are ESTIMATES** | USD = VND ÷ 26,000, rounded: 56M → US$2,154 · 49M → US$1,885 · 35M → US$1,346 · 29.4M → US$1,131. Replace them in `data-source/calibration-gas.json`. |
 | 3 | **Deposit** | Kept Hyperion's US$5 / 130,000 ₫. That is very small against orders of US$1,100–2,200, so please set the right amount in `src/checkout/config.js`. |
 | 4 | **Spreadsheet check** | 23.3.4.1.79 (10 L, THF 1.0%) says "Content of gas: 12.00 liters", but the other 10 L rows say 40.00. It is kept as supplied in the source data; it is not shown on the page. |
