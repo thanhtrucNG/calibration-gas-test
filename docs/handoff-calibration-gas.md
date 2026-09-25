@@ -43,6 +43,7 @@ Steps: 1 Category (THF / Octane, or Multi-gas) → 2 Mixture → 3 Cylinder size
 - `src/configurator/progressive-flow.js`: the design step is hidden before a concept is chosen when no concept in the category has more than one design.
 - `src/components/product-configurator.js`: picture cards only when the options have different images.
 - `src/configurator/size-options.js`: sorts one-number sizes like "8 L".
+- **Locked-step hint cards** (`src/lib/locked-steps.js`, `marine-theme.css`): several grey "next step" cards could show at once. The "next locked" step is now set in JavaScript, so exactly one card shows. This is recorded as a known defect in the template (§9.5, §15, Appendix A).
 
 ## Checklist (§15) — results
 - ✅ Section order is header → hero (dark) → feature (light) → shop (light) → footer (dark). No dark sections are adjacent.

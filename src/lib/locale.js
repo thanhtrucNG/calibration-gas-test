@@ -132,7 +132,7 @@ const vi = {
   'Steel or aluminium cylinders from 3 L to 10 L, BS4 valve.': 'Bình thép hoặc nhôm từ 3 L đến 10 L, van BS4.',
   'Handyman calibration gas cylinders: 3 L and 10 L steel, 8 L aluminium': 'Bình khí chuẩn Handyman: bình thép 3 L và 10 L, bình nhôm 8 L',
   'Choose a mixture': 'Chọn hỗn hợp khí', 'Choose cylinder size': 'Chọn dung tích bình', 'Cylinder basis': 'Hình thức bình',
-  'Select a mixture first': 'Vui lòng chọn hỗn hợp khí trước',
+  'Select a mixture first': 'Vui lòng chọn hỗn hợp khí trước', 'Select a cylinder size first': 'Vui lòng chọn dung tích bình trước',
   'Filter these mixtures': 'Lọc hỗn hợp khí', 'Type a gas or product code': 'Nhập tên khí hoặc mã sản phẩm',
   'No matching mixtures. Try another gas or code.': 'Không có hỗn hợp phù hợp. Vui lòng thử tên khí hoặc mã khác.',
   'Product code': 'Mã sản phẩm',

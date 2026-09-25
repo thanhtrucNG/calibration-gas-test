@@ -233,12 +233,11 @@ h1, h2, h3 { color: var(--hyperion-navy-950); }
 .configuration-step[data-state='locked'] .locked-message {
   position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
 }
-.configuration-step[data-state='locked']:first-child,
-.configuration-step:not([data-state='locked']) + .configuration-step[data-state='locked'] {
+/* "Next" is set by src/lib/locked-steps.js (data-next-locked), never by sibling selectors — see template §9.5. */
+.configuration-step[data-state='locked'][data-next-locked] {
   padding-block: 8px 12px; border-color: var(--hyperion-border-soft); background: #edf3f7;
 }
-.configuration-step[data-state='locked']:first-child .locked-message,
-.configuration-step:not([data-state='locked']) + .configuration-step[data-state='locked'] .locked-message {
+.configuration-step[data-state='locked'][data-next-locked] .locked-message {
   position: static; width: auto; height: auto; margin: 0; overflow: visible; clip-path: none; white-space: normal;
 }
 

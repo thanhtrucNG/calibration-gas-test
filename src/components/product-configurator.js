@@ -6,6 +6,7 @@ import { createConfiguratorStep, describeOption } from './configurator-step.js';
 import { createEditionPurchase } from './edition-purchase.js';
 import { createSizeMatrix } from './size-matrix.js';
 import { createOrderCompletion } from './order-completion.js';
+import { markNextLockedStep } from '../lib/locked-steps.js';
 
 export function createProductConfigurator(families, taxonomy, catalogue, mapping, cart, announce, checkout) {
   const engine = createProgressiveFlow(families, catalogue, mapping);
@@ -126,7 +127,7 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
         slot.root.querySelector('.step-complete')?.remove();
         slot.root.querySelectorAll('[aria-pressed]').forEach(el => el.setAttribute('aria-pressed', 'false'));
         slot.root.setAttribute('aria-describedby', slot.message.id);
-        slot.message.textContent = t(field === 'config_concept' ? 'Select a product category first' : field === 'product_family_id' ? 'Select a mixture first' : 'Complete the previous step');
+        slot.message.textContent = t(field === 'config_concept' ? 'Select a product category first' : ['product_family_id', 'dimensions_display'].includes(field) ? 'Select a mixture first' : field === 'edition' ? 'Select a cylinder size first' : 'Complete the previous step');
         slot.message.hidden = false;
         // Remove stale purchasable identity, leaving this same container in place.
         slot.root.querySelector('[data-sku]')?.removeAttribute('data-sku');
@@ -160,6 +161,7 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
       slot.updateSelection = contents.updateSelection;
       slot.root.replaceChildren(...contents.childNodes, slot.message);
     }
+    markNextLockedStep(section);
     const url = new URL(location.href);
     if (selected) url.searchParams.set('group', selected); else url.searchParams.delete('group');
     history.replaceState(null, '', url);

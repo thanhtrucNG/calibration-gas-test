@@ -407,6 +407,14 @@ The goal of every area: the user sees **only what they need to make the next dec
 3. **No redundant controls.** If the system advances automatically (e.g. Payment unlocks when Contact & Shipping is valid), there is no "Continue" button.
 4. **Hide empty states that carry no information.** No "$0.00 / 0 products" bars; the mobile order bar appears only after the first item.
 5. **Locked steps:** show the step title only; the *next* locked step shows one short unlock hint (≤ 6 words, e.g. "Select a sign first"). Later locked steps collapse to a title row.
+   - **Exactly one** locked step in the whole flow (configurator steps *and* Contact & Shipping / Payment) is the "next" one: the first locked step in DOM order that is not hidden.
+   - It MUST be set in JavaScript, not guessed with CSS sibling selectors. Call `markNextLockedStep()` (`src/lib/locked-steps.js`) after every state change; it sets `data-next-locked` on that one step. The card and hint styles key off that attribute.
+   - The hint names what is missing ("Select a mixture first"), not "Complete the previous step".
+   - ⚠️ **Known defect — do not copy (found 2026-09-25, Calibration Gas):** Hyperion's `marine-theme.css` chooses the "next" step with `.configuration-step[data-state='locked']:first-child` and `:not([data-state='locked']) + [data-state='locked']`. Two things break it:
+     - A **hidden** step (e.g. the skipped "Choose a design" step) counts as "not locked", so the step after it also becomes a card.
+     - Contact & Shipping is the `:first-child` of its own `.order-completion` block, so it always becomes a card too.
+
+     The result is 2–3 grey hint cards stacked at once (e.g. "Choose a mixture", "Choose cylinder size" and "Contact & Shipping" all showing hints). Fixed in the Calibration Gas site; still open in Hyperion (Appendix A).
 6. **Disabled, not hidden, for global actions** whose meaning is clear (e.g. `Reset selection` is disabled until something is selected).
 7. **Placeholders are examples, not instructions** ("IMPA, ISSA, barcode or name").
 8. **Errors appear on blur**, under the field, in 14px red, ≤ 8 words, saying what to fix ("Enter a valid email address").
@@ -651,6 +659,7 @@ Country MUST sit directly before City / Province (same row on desktop/tablet: Co
 - [ ] Screenshots of every section at 1440px and 390px attached.
 - [ ] Full order flow tested: category → item → contact & shipping → payment unlocks automatically; no "Continue" button between steps.
 - [ ] All order steps measure identically (title size, 28px badge, padding, radius) — no step-specific overrides (§6.6).
+- [ ] Locked steps (§9.5): check four states — nothing chosen · category chosen · product resolved with an empty order · item in order. In each, **exactly one** visible locked step has `data-next-locked` and shows a grey hint card; every other locked step is a title row only. Check with a flow that hides a step (a category where the design step is skipped).
 - [ ] Every trigger in §11.1 glides to its target: sample `scrollY` every 50ms after the click — values must pass through intermediate positions (not 0 → target), and the target's top ends at header bottom + 16px. Test once normally and once with `prefers-reduced-motion: reduce` emulated.
 - [ ] `grep` finds no `scrollIntoView` / `scroll-behavior` used for section navigation.
 - [ ] Every CTA button renders in capitals in EN and VI (via `text-transform`, not capitalised strings) (§5.3); option cards and text links are not uppercase.
@@ -674,6 +683,7 @@ Status after the alignment pass of 2026-09-24.
 | Catalogue size | 25.5 MB | ≤ 5 MB (§2) | Needs compressing (image downsampling) before launch — no PDF tool on the build machine |
 | Bank branch name | `VPBank - Chi nhanh Trung Son` (no accents) in bank-transfer settings | proper Vietnamese, unless it must match bank records | Needs a business decision (see `docs/translation-review-hyperion.md`) |
 | Product range strip / hero rotating image | not present | optional; if added, follow §11.2 | Not in the Hyperion brief |
+| ⚠️ **Locked-step hint cards (defect)** | "Next locked" step picked by CSS sibling selectors, so several grey hint cards show at once after a hidden step and at Contact & Shipping | exactly one next-locked card, set by `markNextLockedStep()` (§9.5) | Found 2026-09-25 while building Calibration Gas. Fix: port `src/lib/locked-steps.js` plus its two calls (`product-configurator.js`, `order-completion.js`) and the `[data-next-locked]` CSS from the Calibration Gas site |
 | New catalogue SKUs (2,216, 9 new categories) | LIVE in the site data (2026-09-25) with images; 774 SKUs (50 size × edition rows) use ESTIMATED prices from `scripts/estimate-prices.mjs` | official prices | Replace estimates in `docs/price-list-new-skus.csv` and re-run the build |
 
 **Brought in line (reference implementation):**

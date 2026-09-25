@@ -1,4 +1,5 @@
 import { element, icon } from '../lib/dom.js';
+import { markNextLockedStep } from '../lib/locked-steps.js';
 import { language, t } from '../lib/locale.js';
 import { formatPrice } from '../lib/storefront.js';
 import { secureURL } from '../checkout/payment-service.js';
@@ -143,6 +144,7 @@ export function createOrderCompletion(checkout) {
     payment.placeholder.textContent = t(state.shippingUnlocked ? 'Complete Contact & Shipping first' : 'Add an item to your order first');
     setState(shipping, state.shippingUnlocked, state.paymentUnlocked);
     setState(payment, state.paymentUnlocked, p.status === 'confirmed');
+    markNextLockedStep(root.closest('.configurator') ?? document);
     // City / Province follows the selected country (list, free text, or disabled until a country is picked).
     region.setCountry(order.shipping.countryCode && order.shipping.country ? order.shipping.countryCode : '');
     for (const [key, { group, input, error }] of inputs) {
