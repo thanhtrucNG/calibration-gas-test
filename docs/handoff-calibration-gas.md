@@ -35,13 +35,15 @@ Steps: 1 Mixture (all 5) → 2 Cylinder size (3 L / 8 L / 10 L; sizes that don't
   - A facts strip: **5** mixtures available · **3 · 8 · 10 L** cylinder sizes · **BS4 VALVE** supplied · **12 MONTHS** stability / expiry. The first two are computed from the product data.
   - A gas card, top right, showing 23.3.4.1.3286 (O₂ 20.9%, CO 500 ppm, H₂S 50 ppm, CH₄ 60% LEL, CO₂ 2.5%), read from the product data.
   - The intro paragraph, the facts strip and the gas card deliberately break template §1.1 ("no paragraph text, no statistics") because the business asked for this design.
-- **Hero photo:** replaced 2026-09-25 with the version that has Handyman logos on the cylinders. It is saved as `src/assets/products/calibration-gas/hero.webp` (1672×941, 16:9, 183 KB) under the §3.3 navy overlay.
-  - It is below the template's 2400px width. A larger original would look sharper on wide screens.
-  - **Facts** sit in one glass panel as a 2 × 2 grid (icon, bold value, one-line label) at every width. This replaces the single-row strip, whose two-line labels looked ragged.
-  - **Gas card** is inside the content column, so its right edge lines up with the header's CONTACT SALES button at every desktop width. It shows from 1280px up.
-  - **Photo scaling (≥ 1280px):** the photo is scaled to the hero height, so the cylinders are always about 300px tall. It is placed so the cylinders end 24px left of the card. Where the photo is narrower than the screen, its left edge fades into the navy and its right edge into a blurred copy of the same sunset (`.hero-backdrop` layers built in `hero.js`).
-  - **Below 1280px** (card hidden) the photo covers the hero. On tablets it is anchored left so the cylinders stay right of the headline.
-  - **Measured** at 390–1920px, EN and VI: no text, facts panel or gas card overlaps a cylinder.
+- **Hero photo:** the wide version, supplied 2026-09-25. It is saved as `src/assets/products/calibration-gas/hero.webp` (2000 × 674, about 3 : 1, 177 KB; cylinders at 53–74% of the width) under the §3.3 navy overlay. It has Handyman logos on the cylinders and **no faded edges**.
+  - It is below the template's 2400px width, so a larger export would look sharper on very wide screens.
+  - **Facts** sit in one glass panel as a 2 × 2 grid (icon, bold value, one-line label).
+  - **Gas card** is a compact glass panel (184px wide, 16px text, 42% navy tint with background blur). It sits inside the content column, so its right edge equals the header's CONTACT SALES edge, and it stays 16px clear of the cylinders. It shows from 1280px up.
+  - **Photo placement (≥ 1280px):** the photo is zoomed and positioned in CSS (`.hero-backdrop-photo`) so the cylinders end 8px left of the card and the photo still covers the whole hero. Zoom is 0.91 up to about 1700px and rises to 1.13 at 1920px.
+  - **Below 1280px:** the photo covers the hero, positioned so the cylinders stay right of the copy.
+  - **Measured** at 360–1920px, EN and VI: the photo covers the hero at every width, and no text, facts panel or gas card overlaps a cylinder.
+    - The VI headline is capped at 500px and "chính xác" / "tin cậy" are joined with no-break spaces, so it reads "Khí chuẩn có chứng nhận / cho máy đo khí / chính xác, tin cậy."
+    - On tablets (768–1023px) some cylinders are partly off the right edge.
   - If the photo file is ever removed, the hero falls back to the navy motif with the cylinder photo on a light panel.
 - **Configurator heading** is "ORDER" / "ĐẶT HÀNG" (was "FIND YOUR CALIBRATION GAS"), at your request.
 - **One photo for every SKU and the feature visual:** only `HANDYMAN.8L.CALIBRATIONGAS.webp` exists (1920×1920 on white, 86 KB). The feature visual is shown in a white card because the photo has no transparency.

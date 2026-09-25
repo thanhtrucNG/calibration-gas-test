@@ -10,7 +10,7 @@ Source: `src/lib/locale.js` (UI) and `data-source/calibration-gas.json` (product
 | Area | EN | VI | Issue |
 |---|---|---|---|
 | Hero H1 line 1 | Certified calibration gas | Khí chuẩn có chứng nhận | — |
-| Hero H1 line 2 | for accurate, reliable detectors. | cho máy đo khí chính xác, tin cậy. | — |
+| Hero H1 line 2 | for accurate, reliable detectors. | cho máy đo khí chính xác, tin cậy. | no-break spaces in "chính xác" and "tin cậy" so the line wraps as "cho máy đo khí / chính xác, tin cậy." |
 | Hero intro | Certified mixtures for bump testing, calibration and gas detector verification. | Hỗn hợp khí có chứng nhận để kiểm tra nhanh, hiệu chuẩn và kiểm định máy đo khí. | "kiểm tra nhanh" = bump test: please confirm |
 | Hero facts | mixtures available · cylinder sizes · BS4 valve / supplied · 12 months / stability / expiry | hỗn hợp khí · dung tích bình · Van BS4 / đi kèm · 12 tháng / ổn định / hạn dùng | values uppercased by CSS |
 | Hero CTA | Order | Đặt hàng | CTA, uppercased by CSS |

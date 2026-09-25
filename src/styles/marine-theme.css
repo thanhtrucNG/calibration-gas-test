@@ -127,7 +127,7 @@ h1, h2, h3 { color: var(--hyperion-navy-950); }
 .hero-backdrop { display: none; }
 .hero-has-photo .hero-backdrop { position: absolute; inset: 0; z-index: -1; display: block; }
 .hero-backdrop-photo {
-  --anchor: calc(50% + min(600px, 50% - var(--page-gutter)) - 228px); /* card left (column right − 220px) − 8px */
+  --anchor: calc(50% + min(600px, 50% - var(--page-gutter)) - 200px); /* card left (column right − 184px card) − 16px */
   position: absolute; top: 0; bottom: 0;
   left: var(--anchor);
   width: max(calc(var(--anchor) / 0.7425), calc((100% - var(--anchor)) / 0.2575));
@@ -201,18 +201,19 @@ h1, h2, h3 { color: var(--hyperion-navy-950); }
   .hero-fact-label { white-space: normal; }
 }
 
-/* Gas card: a real mixture from the catalogue, top right. */
+/* Gas card: a real mixture from the catalogue, top right. A compact glass panel so the photo shows through.
+   Its width (184px) is also used by .hero-backdrop-photo's --anchor — change both together. */
 .hero-gas-card {
   position: absolute; top: 88px; right: 0; z-index: 1; /* right edge = content column = header edge */
-  width: 220px; margin: 0; padding: 8px 24px; /* 220px keeps it off the small silver cylinder at 1280px */
-  border-top: 3px solid var(--hyperion-red); border-radius: 12px;
-  background: rgb(6 38 61 / 88%); box-shadow: 0 16px 36px rgb(2 20 32 / 35%);
-  backdrop-filter: blur(6px);
+  width: 184px; margin: 0; padding: 4px 16px;
+  border: 1px solid rgb(255 255 255 / 16%); border-top: 2px solid var(--hyperion-red); border-radius: 12px;
+  background: rgb(6 38 61 / 42%); box-shadow: 0 8px 24px rgb(2 20 32 / 20%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%); backdrop-filter: blur(10px) saturate(120%);
 }
-.hero-gas-row { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgb(255 255 255 / 14%); font-size: 20px; line-height: 1.2; }
+.hero-gas-row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgb(255 255 255 / 12%); font-size: 16px; line-height: 1.2; }
 .hero-gas-row:last-child { border-bottom: 0; }
-.hero-gas-row dt { color: rgb(255 255 255 / 88%); }
-.hero-gas-row dd { margin: 0; color: #fff; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.hero-gas-row dt { color: rgb(255 255 255 / 80%); }
+.hero-gas-row dd { margin: 0; color: #fff; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; text-shadow: 0 1px 6px rgb(4 33 53 / 50%); }
 /* Below 1280px the card would sit on the cylinders, so it is desktop-only. */
 @media (max-width: 1279.98px) { .hero-gas-card { display: none; } }
 
