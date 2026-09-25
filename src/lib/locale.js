@@ -117,8 +117,6 @@ const vi = {
   'Select a province from the list': 'Vui lòng chọn tỉnh / thành phố trong danh sách',
   // Calibration gas product copy.
   'Certified calibration gas': 'Khí chuẩn có chứng nhận',
-  'for accurate gas detection.': 'cho phép đo khí chính xác.',
-  'Find your gas': 'Tìm khí chuẩn',
   'GAS QUALITY': 'CHẤT LƯỢNG KHÍ',
   'Built for reliable calibration.': 'Hiệu chuẩn đáng tin cậy.',
   'Certified gas mixtures for bump testing and calibrating fixed and portable gas detectors, onboard and onshore.': 'Hỗn hợp khí có chứng nhận để kiểm tra nhanh và hiệu chuẩn máy đo khí cố định, cầm tay, trên tàu và trên bờ.',
@@ -136,9 +134,12 @@ const vi = {
   'Filter these mixtures': 'Lọc hỗn hợp khí', 'Type a gas or product code': 'Nhập tên khí hoặc mã sản phẩm',
   'No matching mixtures. Try another gas or code.': 'Không có hỗn hợp phù hợp. Vui lòng thử tên khí hoặc mã khác.',
   'Product code': 'Mã sản phẩm',
-  'Outright cylinder': 'Bình mua đứt', 'Refillable cylinder': 'Bình nạp lại được',
+  'Outright cylinder': 'Outright cylinder', 'Refillable cylinder': 'Refillable cylinder',
   'Skip to order': 'Chuyển đến phần đặt hàng',
-  'Certified mixture': 'Hỗn hợp được chứng nhận', 'Balance N₂ · ±2% certified': 'Nền N₂ · chứng nhận ±2%',
+  'for accurate, reliable detectors.': 'cho máy đo khí chính xác, tin cậy.',
+  'Certified mixtures for bump testing, calibration and gas detector verification.': 'Hỗn hợp khí có chứng nhận để kiểm tra nhanh, hiệu chuẩn và kiểm định máy đo khí.',
+  'mixtures available': 'hỗn hợp khí', 'cylinder sizes': 'dung tích bình', 'BS4 valve': 'Van BS4', 'supplied': 'đi kèm',
+  '12 months': '12 tháng', 'stability / expiry': 'ổn định / hạn dùng', // no-break spaces: wrap only at the slash
   'Not available for this mixture': 'Không có dung tích này cho hỗn hợp đã chọn',
   // Counted strings: pick the key with tn(count, one, other); {n} is replaced by the count.
   '{n} product': '{n} mã sản phẩm', '{n} products': '{n} mã sản phẩm',

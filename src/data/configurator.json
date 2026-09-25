@@ -1,13 +1,7 @@
 {
   "source": "data-source/calibration-gas.json",
   "branches": {
-    "thf-octane-mixtures": [
-      "customer_category_id",
-      "config_concept",
-      "dimensions_display",
-      "edition"
-    ],
-    "multi-gas-mixtures": [
+    "calibration-gas": [
       "customer_category_id",
       "config_concept",
       "dimensions_display",
@@ -16,8 +10,8 @@
   },
   "concepts": [
     {
-      "id": "thf-octane-mixtures:thf-0.5-oct-0.05",
-      "category_id": "thf-octane-mixtures",
+      "id": "calibration-gas:thf-0.5-oct-0.05",
+      "category_id": "calibration-gas",
       "label_en": "THF 0.5% · Octane 0.05%",
       "label_vi": "THF 0,5% · Octane 0,05%",
       "labels_vi": [
@@ -30,8 +24,8 @@
       ]
     },
     {
-      "id": "thf-octane-mixtures:thf-1.0-oct-0.1",
-      "category_id": "thf-octane-mixtures",
+      "id": "calibration-gas:thf-1.0-oct-0.1",
+      "category_id": "calibration-gas",
       "label_en": "THF 1.0% · Octane 0.1%",
       "label_vi": "THF 1,0% · Octane 0,1%",
       "labels_vi": [
@@ -44,8 +38,8 @@
       ]
     },
     {
-      "id": "thf-octane-mixtures:thf-1.5-oct-0.15",
-      "category_id": "thf-octane-mixtures",
+      "id": "calibration-gas:thf-1.5-oct-0.15",
+      "category_id": "calibration-gas",
       "label_en": "THF 1.5% · Octane 0.15%",
       "label_vi": "THF 1,5% · Octane 0,15%",
       "labels_vi": [
@@ -58,8 +52,8 @@
       ]
     },
     {
-      "id": "multi-gas-mixtures:mg-o2-18",
-      "category_id": "multi-gas-mixtures",
+      "id": "calibration-gas:mg-o2-18",
+      "category_id": "calibration-gas",
       "label_en": "O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2,500 ppm",
       "label_vi": "O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2.500 ppm",
       "labels_vi": [
@@ -72,8 +66,8 @@
       ]
     },
     {
-      "id": "multi-gas-mixtures:mg-o2-20.9",
-      "category_id": "multi-gas-mixtures",
+      "id": "calibration-gas:mg-o2-20.9",
+      "category_id": "calibration-gas",
       "label_en": "O₂ 20.9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2.5%",
       "label_vi": "O₂ 20,9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2,5%",
       "labels_vi": [
@@ -96,27 +90,27 @@
   "families": [
     {
       "product_family_id": "CG-thf-0.5-oct-0.05",
-      "config_concept": "thf-octane-mixtures:thf-0.5-oct-0.05",
+      "config_concept": "calibration-gas:thf-0.5-oct-0.05",
       "config_direction": "unspecified"
     },
     {
       "product_family_id": "CG-thf-1.0-oct-0.1",
-      "config_concept": "thf-octane-mixtures:thf-1.0-oct-0.1",
+      "config_concept": "calibration-gas:thf-1.0-oct-0.1",
       "config_direction": "unspecified"
     },
     {
       "product_family_id": "CG-thf-1.5-oct-0.15",
-      "config_concept": "thf-octane-mixtures:thf-1.5-oct-0.15",
+      "config_concept": "calibration-gas:thf-1.5-oct-0.15",
       "config_direction": "unspecified"
     },
     {
       "product_family_id": "CG-mg-o2-18",
-      "config_concept": "multi-gas-mixtures:mg-o2-18",
+      "config_concept": "calibration-gas:mg-o2-18",
       "config_direction": "unspecified"
     },
     {
       "product_family_id": "CG-mg-o2-20.9",
-      "config_concept": "multi-gas-mixtures:mg-o2-20.9",
+      "config_concept": "calibration-gas:mg-o2-20.9",
       "config_direction": "unspecified"
     }
   ]

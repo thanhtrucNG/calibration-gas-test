@@ -10,8 +10,10 @@ Source: `src/lib/locale.js` (UI) and `data-source/calibration-gas.json` (product
 | Area | EN | VI | Issue |
 |---|---|---|---|
 | Hero H1 line 1 | Certified calibration gas | Khí chuẩn có chứng nhận | — |
-| Hero H1 line 2 | for accurate gas detection. | cho phép đo khí chính xác. | — |
-| Hero CTA | Find your gas | Tìm khí chuẩn | CTA, uppercased by CSS |
+| Hero H1 line 2 | for accurate, reliable detectors. | cho máy đo khí chính xác, tin cậy. | — |
+| Hero intro | Certified mixtures for bump testing, calibration and gas detector verification. | Hỗn hợp khí có chứng nhận để kiểm tra nhanh, hiệu chuẩn và kiểm định máy đo khí. | "kiểm tra nhanh" = bump test: please confirm |
+| Hero facts | mixtures available · cylinder sizes · BS4 valve / supplied · 12 months / stability / expiry | hỗn hợp khí · dung tích bình · Van BS4 / đi kèm · 12 tháng / ổn định / hạn dùng | values uppercased by CSS |
+| Hero CTA | Order | Đặt hàng | CTA, uppercased by CSS |
 | Hero CTA | Download catalogue | Tải catalogue | shared |
 | Feature eyebrow | GAS QUALITY | CHẤT LƯỢNG KHÍ | — |
 | Feature H2 | Built for reliable calibration. | Hiệu chuẩn đáng tin cậy. | — |
@@ -26,8 +28,6 @@ Source: `src/lib/locale.js` (UI) and `data-source/calibration-gas.json` (product
 | Feature card | Steel or aluminium cylinders from 3 L to 10 L, BS4 valve. | Bình thép hoặc nhôm từ 3 L đến 10 L, van BS4. | — |
 | Feature image alt | Handyman calibration gas cylinders: 3 L and 10 L steel, 8 L aluminium | Bình khí chuẩn Handyman: bình thép 3 L và 10 L, bình nhôm 8 L | — |
 | Configurator heading | ORDER | ĐẶT HÀNG | same key as the header nav link (glossary) |
-| Hero certificate tag | Certified mixture | Hỗn hợp được chứng nhận | desktop only |
-| Hero certificate tag | Balance N₂ · ±2% certified | Nền N₂ · chứng nhận ±2% | — |
 | Step title | Choose a mixture | Chọn hỗn hợp khí | — |
 | Step title | Choose cylinder size | Chọn dung tích bình | — |
 | Step title | Cylinder basis | Hình thức bình | — |
@@ -35,15 +35,14 @@ Source: `src/lib/locale.js` (UI) and `data-source/calibration-gas.json` (product
 | Size disabled tooltip | Not available for this mixture | Không có dung tích này cho hỗn hợp đã chọn | — |
 | Filter (shown only if > 8 mixtures) | Filter these mixtures / Type a gas or product code / No matching mixtures. Try another gas or code. | Lọc hỗn hợp khí / Nhập tên khí hoặc mã sản phẩm / Không có hỗn hợp phù hợp. Vui lòng thử tên khí hoặc mã khác. | not visible with 5 mixtures |
 | Product code label | Product code | Mã sản phẩm | glossary: SKU → mã sản phẩm |
-| Edition values | Outright cylinder / Refillable cylinder | Bình mua đứt / Bình nạp lại được | please confirm "mua đứt" |
+| Edition values | Outright cylinder / Refillable cylinder | Outright cylinder / Refillable cylinder | Both kept in English on the VI page — approved by the business on 2026-09-25 |
 | Skip link | Skip to order | Chuyển đến phần đặt hàng | — |
 
 ## Product data (`data-source/calibration-gas.json`)
 
 | Area | EN | VI | Issue |
 |---|---|---|---|
-| Category | THF / Octane mixtures | Hỗn hợp THF / Octane | — |
-| Category | Multi-gas detector mixtures | Hỗn hợp cho máy đo đa khí | — |
+| Category (not shown: single category, step skipped) | Calibration gas | Khí chuẩn | — |
 | Mixture | THF 0.5% · Octane 0.05% (also 1.0/0.1, 1.5/0.15) | THF 0,5% · Octane 0,05% … | VI uses decimal comma |
 | Mixture | O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2,500 ppm | … CO₂ 2.500 ppm | VI thousands dot |
 | Mixture | O₂ 20.9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2.5% | O₂ 20,9% · … · CO₂ 2,5% | — |

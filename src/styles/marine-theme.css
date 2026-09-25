@@ -104,8 +104,11 @@ h1, h2, h3 { color: var(--hyperion-navy-950); }
   color: var(--hyperion-navy-950);
 }
 
-/* Hero: designed gas-detection backdrop (no hero photo supplied) with the navy overlay from §3.3. */
+/* Hero — layout from the approved mockup (docs: handoff-calibration-gas.md).
+   Background: the offshore photo (src/assets/products/calibration-gas/hero.webp) under the §3.3 overlay once
+   hero.js has confirmed the file loads; until then the designed navy backdrop plus the cylinder panel. */
 .hero {
+  z-index: 1;
   border-top: 0;
   background-color: var(--hyperion-navy-950);
   background-image:
@@ -114,76 +117,120 @@ h1, h2, h3 { color: var(--hyperion-navy-950); }
   background-size: cover;
   background-position: center;
 }
+/* With the photo (hero.webp, 2000 × 674; cylinders span 53.4–74.25% of its width, 25–92% of its height).
+   ≥ 1280px — one zoomed photo, no fades. Its box is anchored so the cylinders' right edge sits 8px left of the
+   gas card (the card is aligned with the content column = header edge), and it is made wide enough to cover
+   the hero on both sides. background-position-x 74.25% keeps the cylinders' right edge at 74.25% of the box
+   even when cover scales the photo by height; y 100% keeps the cylinder bases in view.
+   < 1280px — the card is hidden; the photo covers the hero, positioned to keep the cylinders right of the copy. */
+.hero.hero-has-photo { overflow: hidden; isolation: isolate; background-image: none; }
+.hero-backdrop { display: none; }
+.hero-has-photo .hero-backdrop { position: absolute; inset: 0; z-index: -1; display: block; }
+.hero-backdrop-photo {
+  --anchor: calc(50% + min(600px, 50% - var(--page-gutter)) - 228px); /* card left (column right − 220px) − 8px */
+  position: absolute; top: 0; bottom: 0;
+  left: var(--anchor);
+  width: max(calc(var(--anchor) / 0.7425), calc((100% - var(--anchor)) / 0.2575));
+  transform: translateX(-74.25%);
+  background: var(--hero-photo) 74.25% 100% / cover no-repeat;
+}
+@media (max-width: 1279.98px) {
+  .hero-backdrop-photo { left: 0; right: 0; width: auto; transform: none; background-position: 45% 100%; }
+}
+@media (max-width: 1023.98px) { .hero-backdrop-photo { background-position: 40% 100%; } }
+.hero-backdrop::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(4,33,53,.86) 0%, rgba(4,33,53,.70) 38%, rgba(4,33,53,.30) 68%, rgba(4,33,53,.08) 100%);
+}
 @media (max-width: 767.98px) {
-  /* Headline spans the full width on phones, so darken the whole backdrop evenly. */
+  .hero-backdrop::after { background: linear-gradient(180deg, rgba(4,33,53,.84) 0%, rgba(4,33,53,.74) 100%); }
+}
+@media (max-width: 767.98px) {
+  /* Copy spans the full width on phones, so darken the whole background evenly. */
   .hero {
     background-image:
       linear-gradient(180deg, rgba(4,33,53,.84) 0%, rgba(4,33,53,.74) 100%),
       url('../assets/products/calibration-gas/hero-motif.svg');
   }
 }
-.hero { z-index: 1; }
-/* Two columns: copy left, product stage right. The stage overhangs 48px into the feature section
-   (inside its 96px top padding), so the hero stays compact without cropping the cylinders. */
-.hero-inner { min-height: 400px; grid-template-columns: minmax(0, 1fr) 480px; gap: 48px; align-items: center; padding-block: 48px 0; }
-.hero-copy { padding-bottom: 48px; }
-@media (max-width: 1279.98px) { .hero-inner { grid-template-columns: minmax(0, 1fr) 360px; gap: 32px; } }
-@media (max-width: 1023.98px) { .hero-inner { min-height: 360px; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; padding-block: 48px 0; } }
-@media (max-width: 767.98px) { .hero-inner { min-height: 0; grid-template-columns: 1fr; gap: 0; padding-block: 40px 48px; } .hero-copy { padding-bottom: 0; } }
-.hero h1 { color: #fff; font-size: 40px; line-height: 1.2; font-weight: 700; letter-spacing: 0; }
-@media (max-width: 767.98px) { .hero h1 { font-size: 28px; } }
-.hero .eyebrow { font-size: 14px; letter-spacing: .12em; margin-bottom: 12px; }
-.hero-title-second { white-space: nowrap; }
-@media (max-width: 1023.98px) { .hero-title-second { white-space: normal; } }
 
-/* Product stage: a light lab panel with a faint measuring grid. The photo multiplies onto it, so the
-   photo's white backdrop takes the panel's colour and grid, and only the cylinders stand out. */
-.hero-visual { position: relative; align-self: end; margin: 0 0 -48px; }
+.hero-inner { position: relative; display: block; min-height: 560px; padding-block: 64px 48px; }
+@media (max-width: 1023.98px) { .hero-inner { min-height: 0; padding-block: 48px; } }
+@media (max-width: 767.98px) { .hero-inner { padding-block: 40px 48px; } }
+.hero-copy { position: relative; z-index: 1; }
+
+.hero .eyebrow { margin-bottom: 12px; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: .12em; }
+.hero .eyebrow-accent { margin-left: .4em; color: #ff8a73; }
+.hero h1 { max-width: 520px; color: #fff; font-size: 40px; font-weight: 700; line-height: 1.2; letter-spacing: 0; }
+.hero-title-second { display: block; color: #c7ddea; white-space: normal; text-wrap: wrap; } /* break like the mockup: "…reliable / detectors." */
+.hero-intro { max-width: 520px; margin-top: 16px; color: rgb(255 255 255 / 88%); font-size: 20px; line-height: 1.5; text-wrap: pretty; }
+@media (max-width: 767.98px) {
+  .hero h1 { font-size: 28px; }
+  .hero-intro { font-size: 16px; }
+}
+
+.hero-actions { gap: 16px; margin-top: 32px; }
+.hero-action { gap: 12px; }
+.hero-action .icon, .hero-action .icon svg { width: 20px; height: 20px; }
+.hero-actions .button-primary { min-width: 208px; justify-content: center; }
+@media (max-width: 767.98px) { .hero-actions { margin-top: 24px; } .hero-actions .button-primary { min-width: 0; } }
+
+/* Facts panel: one glass panel, 2 × 2 grid of equal cells (icon tile + bold value + one-line label).
+   Fixed shape at every width, so labels never wrap into ragged columns and the panel stays left of the cylinders. */
+.hero-facts {
+  display: inline-grid; grid-template-columns: repeat(2, max-content); gap: 16px 48px;
+  margin: 32px 0 0; padding: 16px 24px; list-style: none;
+  border: 1px solid rgb(255 255 255 / 12%); border-radius: 12px;
+  background: rgb(4 33 53 / 55%); backdrop-filter: blur(6px);
+}
+.hero-fact { display: flex; align-items: center; gap: 12px; }
+.hero-fact-icon {
+  display: grid; flex: 0 0 44px; place-items: center; width: 44px; height: 44px;
+  border: 1px solid rgb(255 255 255 / 18%); border-radius: 10px; background: rgb(255 255 255 / 6%); color: #ff8a73;
+}
+.hero-fact-icon svg { width: 24px; height: 24px; }
+.hero-fact-text { display: flex; flex-direction: column; }
+.hero-fact-value { color: #fff; font-size: 20px; font-weight: 700; line-height: 1.2; white-space: nowrap; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.hero-fact-label { color: rgb(255 255 255 / 72%); font-size: 14px; line-height: 1.5; white-space: nowrap; }
+@media (max-width: 767.98px) {
+  /* Phones: full-width panel, two equal columns; a long label may wrap between words. */
+  .hero-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; padding: 16px; }
+  .hero-fact { gap: 8px; }
+  .hero-fact-icon { flex-basis: 40px; width: 40px; height: 40px; }
+  .hero-fact-value { font-size: 16px; }
+  .hero-fact-label { white-space: normal; }
+}
+
+/* Gas card: a real mixture from the catalogue, top right. */
+.hero-gas-card {
+  position: absolute; top: 88px; right: 0; z-index: 1; /* right edge = content column = header edge */
+  width: 220px; margin: 0; padding: 8px 24px; /* 220px keeps it off the small silver cylinder at 1280px */
+  border-top: 3px solid var(--hyperion-red); border-radius: 12px;
+  background: rgb(6 38 61 / 88%); box-shadow: 0 16px 36px rgb(2 20 32 / 35%);
+  backdrop-filter: blur(6px);
+}
+.hero-gas-row { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgb(255 255 255 / 14%); font-size: 20px; line-height: 1.2; }
+.hero-gas-row:last-child { border-bottom: 0; }
+.hero-gas-row dt { color: rgb(255 255 255 / 88%); }
+.hero-gas-row dd { margin: 0; color: #fff; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* Below 1280px the card would sit on the cylinders, so it is desktop-only. */
+@media (max-width: 1279.98px) { .hero-gas-card { display: none; } }
+
+/* Stand-in until the photo exists: cylinders on a light panel, between the copy and the gas card.
+   The photo multiplies onto the panel so its white backdrop disappears. Wide screens only. */
 .hero-stage {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-top: 3px solid var(--hyperion-red);
-  border-radius: 16px;
+  position: absolute; top: 64px; right: 324px; width: 300px; aspect-ratio: 1; margin: 0; overflow: hidden;
+  border-top: 3px solid var(--hyperion-red); border-radius: 16px;
   background:
     linear-gradient(rgb(6 38 61 / 5%) 1px, transparent 1px) 0 0 / 24px 24px,
     linear-gradient(90deg, rgb(6 38 61 / 5%) 1px, transparent 1px) 0 0 / 24px 24px,
     radial-gradient(circle at 50% 42%, #fff 0%, #f1f6f9 62%, #dce8f0 100%);
   box-shadow: 0 16px 36px rgb(2 20 32 / 35%);
 }
-.hero-visual-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: right center; /* cylinders sit right; the certificate tag covers the empty left */
-  transform: scale(1.1);
-  transform-origin: right center;
-  mix-blend-mode: multiply;
-}
-/* Certificate tag: a real mixture from the catalogue, overlapping the stage's lower-left corner. */
-.hero-tag {
-  position: absolute;
-  left: -88px;
-  bottom: 48px;
-  width: 216px;
-  padding: 16px;
-  border-top: 3px solid var(--hyperion-red);
-  border-radius: 8px;
-  background: rgb(6 38 61 / 96%);
-  box-shadow: 0 16px 36px rgb(2 20 32 / 35%);
-  color: #fff;
-}
-.hero-tag-title { margin: 0 0 8px; color: #ff8a73; font-size: 14px; font-weight: 700; line-height: 1.5; letter-spacing: .12em; text-transform: uppercase; }
-.hero-tag-rows { margin: 0; }
-.hero-tag-row { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; border-bottom: 1px solid rgb(255 255 255 / 12%); font-size: 14px; line-height: 1.5; }
-.hero-tag-row dt { color: rgb(255 255 255 / 62%); }
-.hero-tag-row dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.hero-tag-note { margin: 8px 0 0; color: rgb(255 255 255 / 62%); font-size: 14px; line-height: 1.5; white-space: nowrap; }
-/* Below 1280px the copy column needs the room, so the tag is desktop-only. */
-@media (max-width: 1279.98px) { .hero-tag { display: none; } }
-@media (max-width: 1023.98px) { .hero-visual { margin-bottom: -32px; } .hero-tag { display: none; } }
-@media (max-width: 767.98px) { .hero-visual { display: none; } }
+.hero-stage-image { display: block; width: 100%; height: 100%; object-fit: contain; transform: scale(1.1); mix-blend-mode: multiply; }
+.hero-has-photo .hero-stage { display: none; }
+@media (max-width: 1279.98px) { .hero-stage { display: none; } }
+
 .hero-title-second { color: #c7ddea; }
 .eyebrow { color: #ffc0b3; }
 .hero-catalogue { border-left-color: rgb(255 255 255 / 24%); }

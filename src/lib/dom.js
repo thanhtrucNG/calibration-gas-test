@@ -12,6 +12,7 @@ export function icon(name) {
     search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',
     cart: '<path d="M3 3h2l3 12h11l2-8H6M9 19h.01M18 19h.01"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>',
     arrow: '<path d="M4 12h15m-6-6 6 6-6 6"/>',
+    download: '<path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/>',
     box: '<rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M9 9v11"/>',
     check: '<path d="m5 12 4 4L19 6"/>',
     card: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 15h4"/>',

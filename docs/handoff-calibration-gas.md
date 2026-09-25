@@ -12,7 +12,8 @@ Built from the Hyperion reference (`Downloads/hyperion-imo-signs`) following `do
 - All **8 SKUs** from `Calibration Gas.xlsx` are on sale.
 
 ## Order flow
-Steps: 1 Category (THF / Octane, or Multi-gas) → 2 Mixture → 3 Cylinder size (3 L / 8 L / 10 L; sizes that don't fit the mixture are disabled) → 4 Cylinder basis (a single value, filled in automatically) + Add to order → 5 Contact & Shipping → 6 Payment.
+Steps: 1 Mixture (all 5) → 2 Cylinder size (3 L / 8 L / 10 L; sizes that don't fit the mixture are disabled) → 3 Cylinder basis (a single value, filled in automatically) + Add to order → 4 Contact & Shipping → 5 Payment.
+- **No category step** (at your request, since there are only 8 SKUs). The data has one category, "Calibration gas". `product-configurator.js` skips the category step whenever `taxonomy.json` has a single group, and numbers the steps from 1. This deviates from template §1.1, where step 1 is always "Choose a product category".
 - The Hyperion "design" step is skipped automatically because each mixture has only one design.
 - Mixtures show as a text list, not picture cards, because they all share one photo.
 
@@ -27,11 +28,21 @@ Steps: 1 Category (THF / Octane, or Multi-gas) → 2 Mixture → 3 Cylinder size
 | 6 | **Vietnamese copy** | Needs review by a Vietnamese speaker: `docs/translation-review-calibration-gas.md`. |
 
 ## Deviations from the template
-- **Hero photo:** none was supplied, so the hero is designed instead. It was redesigned on request to be more compact (400px tall, down from about 540px):
-  - The navy backdrop uses a sensor-ring and molecule motif (`src/assets/products/calibration-gas/hero-motif.svg`) under the §3.3 overlay.
-  - On the right, a light "lab panel" (4:3, faint measuring grid, red top accent) holds the cylinder photo. The photo multiplies onto the panel, so its white background disappears.
-  - The panel overhangs 48px into the feature section (32px on tablet). It is hidden on phones.
-  - **Certificate tag (≥ 1280px only):** a navy card overlapping the panel lists the gas composition of 23.3.4.1.3286 (O₂ 20.9%, CO 500 ppm, H₂S 50 ppm, CH₄ 60% LEL, CO₂ 2.5%), read from the product data. §1.1 says "no statistics in the hero", so this is a deliberate deviation made at your request to make the hero less empty.
+- **Hero:** built to match the approved mockup (2026-09-25):
+  - Eyebrow "CALIBRATION GAS **BY HANDYMAN**".
+  - Three-line headline "Certified calibration gas / for accurate, reliable / detectors."
+  - One-line intro, then ORDER → and DOWNLOAD CATALOGUE ↓ buttons.
+  - A facts strip: **5** mixtures available · **3 · 8 · 10 L** cylinder sizes · **BS4 VALVE** supplied · **12 MONTHS** stability / expiry. The first two are computed from the product data.
+  - A gas card, top right, showing 23.3.4.1.3286 (O₂ 20.9%, CO 500 ppm, H₂S 50 ppm, CH₄ 60% LEL, CO₂ 2.5%), read from the product data.
+  - The intro paragraph, the facts strip and the gas card deliberately break template §1.1 ("no paragraph text, no statistics") because the business asked for this design.
+- **Hero photo:** replaced 2026-09-25 with the version that has Handyman logos on the cylinders. It is saved as `src/assets/products/calibration-gas/hero.webp` (1672×941, 16:9, 183 KB) under the §3.3 navy overlay.
+  - It is below the template's 2400px width. A larger original would look sharper on wide screens.
+  - **Facts** sit in one glass panel as a 2 × 2 grid (icon, bold value, one-line label) at every width. This replaces the single-row strip, whose two-line labels looked ragged.
+  - **Gas card** is inside the content column, so its right edge lines up with the header's CONTACT SALES button at every desktop width. It shows from 1280px up.
+  - **Photo scaling (≥ 1280px):** the photo is scaled to the hero height, so the cylinders are always about 300px tall. It is placed so the cylinders end 24px left of the card. Where the photo is narrower than the screen, its left edge fades into the navy and its right edge into a blurred copy of the same sunset (`.hero-backdrop` layers built in `hero.js`).
+  - **Below 1280px** (card hidden) the photo covers the hero. On tablets it is anchored left so the cylinders stay right of the headline.
+  - **Measured** at 390–1920px, EN and VI: no text, facts panel or gas card overlaps a cylinder.
+  - If the photo file is ever removed, the hero falls back to the navy motif with the cylinder photo on a light panel.
 - **Configurator heading** is "ORDER" / "ĐẶT HÀNG" (was "FIND YOUR CALIBRATION GAS"), at your request.
 - **One photo for every SKU and the feature visual:** only `HANDYMAN.8L.CALIBRATIONGAS.webp` exists (1920×1920 on white, 86 KB). The feature visual is shown in a white card because the photo has no transparency.
 - **Inherited from Hyperion (still open in Appendix A):**

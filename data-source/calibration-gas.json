@@ -4,23 +4,23 @@
   "usd_rate_note": "ESTIMATE: USD = VND / 26,000, rounded to whole dollars. Replace with official USD prices.",
   "image_url": "./src/assets/products/calibration-gas/product.webp",
   "categories": [
-    { "id": "thf-octane-mixtures", "label_en": "THF / Octane mixtures", "label_vi": "Hỗn hợp THF / Octane", "order": 1 },
-    { "id": "multi-gas-mixtures", "label_en": "Multi-gas detector mixtures", "label_vi": "Hỗn hợp cho máy đo đa khí", "order": 2 }
+    { "id": "calibration-gas", "label_en": "Calibration gas", "label_vi": "Khí chuẩn", "order": 1,
+      "note": "Single category: the configurator skips the category step when there is only one." }
   ],
   "mixtures": [
-    { "id": "thf-0.5-oct-0.05", "category_id": "thf-octane-mixtures",
+    { "id": "thf-0.5-oct-0.05", "category_id": "calibration-gas",
       "label_en": "THF 0.5% · Octane 0.05%", "label_vi": "THF 0,5% · Octane 0,05%",
       "detail_en": "Balance N₂ · 3 L or 10 L steel cylinder", "detail_vi": "Nền N₂ · bình thép 3 L hoặc 10 L" },
-    { "id": "thf-1.0-oct-0.1", "category_id": "thf-octane-mixtures",
+    { "id": "thf-1.0-oct-0.1", "category_id": "calibration-gas",
       "label_en": "THF 1.0% · Octane 0.1%", "label_vi": "THF 1,0% · Octane 0,1%",
       "detail_en": "Balance N₂ · 3 L or 10 L steel cylinder", "detail_vi": "Nền N₂ · bình thép 3 L hoặc 10 L" },
-    { "id": "thf-1.5-oct-0.15", "category_id": "thf-octane-mixtures",
+    { "id": "thf-1.5-oct-0.15", "category_id": "calibration-gas",
       "label_en": "THF 1.5% · Octane 0.15%", "label_vi": "THF 1,5% · Octane 0,15%",
       "detail_en": "Balance N₂ · 3 L or 10 L steel cylinder", "detail_vi": "Nền N₂ · bình thép 3 L hoặc 10 L" },
-    { "id": "mg-o2-18", "category_id": "multi-gas-mixtures",
+    { "id": "mg-o2-18", "category_id": "calibration-gas",
       "label_en": "O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2,500 ppm", "label_vi": "O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2.500 ppm",
       "detail_en": "Balance N₂ · 8 L aluminium cylinder", "detail_vi": "Nền N₂ · bình nhôm 8 L" },
-    { "id": "mg-o2-20.9", "category_id": "multi-gas-mixtures",
+    { "id": "mg-o2-20.9", "category_id": "calibration-gas",
       "label_en": "O₂ 20.9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2.5%", "label_vi": "O₂ 20,9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2,5%",
       "detail_en": "Balance N₂ · 8 L aluminium cylinder", "detail_vi": "Nền N₂ · bình nhôm 8 L" }
   ],
@@ -30,8 +30,8 @@
     "8L-aluminium": { "size": "8 L", "name_en": "8 L aluminium cylinder", "name_vi": "bình nhôm 8 L" }
   },
   "bases": {
-    "Outright": { "label_en": "Outright cylinder", "label_vi": "Bình mua đứt" },
-    "Refillable": { "label_en": "Refillable cylinder", "label_vi": "Bình nạp lại được" }
+    "Outright": { "label_en": "Outright cylinder", "label_vi": "Outright cylinder" },
+    "Refillable": { "label_en": "Refillable cylinder", "label_vi": "Refillable cylinder" }
   },
   "skus": [
     { "reference": "23.3.4.1.77", "mixture_id": "thf-0.5-oct-0.05", "cylinder": "3L-steel", "basis": "Outright", "price_vnd": 56000000,

@@ -50,6 +50,10 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
   status.setAttribute('aria-live', 'polite');
   status.setAttribute('aria-atomic', 'true');
   panel.append(legend, options);
+  // With a single product category there is nothing to choose: skip the category step and number from 1.
+  const singleGroup = taxonomy.groups.length === 1 ? taxonomy.groups[0].id : null;
+  panel.hidden = Boolean(singleGroup);
+  const firstStep = singleGroup ? 1 : 2;
   const downstream = element('div', 'configuration-steps');
   const main = element('div', 'configurator-main');
   const completion = createOrderCompletion(checkout);
@@ -57,8 +61,8 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
   section.append(heading, main);
   const initial = new URLSearchParams(location.search).get('group');
   const savedSelections = readSavedSelections();
-  const initialGroup = taxonomy.groups.some(group => group.id === initial) ? initial
-    : taxonomy.groups.some(group => group.id === savedSelections.customer_category_id) ? savedSelections.customer_category_id : null;
+  const initialGroup = singleGroup ?? (taxonomy.groups.some(group => group.id === initial) ? initial
+    : taxonomy.groups.some(group => group.id === savedSelections.customer_category_id) ? savedSelections.customer_category_id : null);
   if (initialGroup) {
     engine.select('customer_category_id', initialGroup);
     for (const field of ['config_concept', 'product_family_id', 'dimensions_display', 'edition']) {
@@ -78,7 +82,7 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
     root.dataset.field = field;
     if (field !== 'edition') {
       const legend = element('legend'); legend.tabIndex = -1;
-      legend.append(element('span', 'step-number', String(index + 2)), element('span', '', t(labels[field])));
+      legend.append(element('span', 'step-number', String(index + firstStep)), element('span', '', t(labels[field])));
       root.append(legend);
     }
     const message = element('p', 'locked-message'); message.id = 'locked-' + field;
@@ -103,7 +107,7 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
     saveSelections(state.selections);
     const selected = state.selections.customer_category_id;
     for (const [id, button] of buttons) button.setAttribute('aria-pressed', String(id === selected));
-    reset.disabled = !selected;
+    reset.disabled = singleGroup ? !state.selections.config_concept : !selected;
     section.dataset.familyCount = state.candidateFamilies.length;
     section.dataset.skuCount = state.currentCandidates.length;
     const group = taxonomy.groups.find(g => g.id === selected);
@@ -111,14 +115,14 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
     status.textContent = state.error ? t(state.error) : !group ? t('Choose a category to begin.')
       : state.resolvedSku ? '' : t(labels[state.activeField]);
     const route = state.roadmap;
-    completion.setStartNumber(route.length + 2);
+    completion.setStartNumber(route.length + firstStep);
     for (const [field, slot] of slots) {
       const index = route.findIndex(step => step.field === field);
       slot.root.hidden = index < 0;
       if (index < 0) { slot.signature = null; slot.root.querySelectorAll('[aria-pressed]').forEach(el => el.setAttribute('aria-pressed', 'false')); continue; } // Omit only a now-known unnecessary Design route.
       const step = route[index];
       if (field === 'dimensions_display') sizeMatrix.update(step);
-      slot.root.querySelector('.step-number').textContent = String(index + 2);
+      slot.root.querySelector('.step-number').textContent = String(index + firstStep);
       slot.root.disabled = Boolean(step.locked);
       slot.root.setAttribute('aria-disabled', String(Boolean(step.locked)));
       if (step.locked) {
@@ -153,7 +157,7 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
         && (!state.selections.config_concept || field === 'config_concept' || mapping.families.some(item => item.product_family_id === family.id && item.config_concept === state.selections.config_concept)));
       const stateKey = selected + ':' + field;
       if (!stepStates.has(stateKey)) stepStates.set(stateKey, {});
-      const contents = createConfiguratorStep({ uiState: stepStates.get(stateKey), ...step, number: index + 2, title: t(labels[field]),
+      const contents = createConfiguratorStep({ uiState: stepStates.get(stateKey), ...step, number: index + firstStep, title: t(labels[field]),
         // Picture cards only when the pictures tell the choices apart; one shared photo becomes a text list.
         visual: ['config_concept', 'product_family_id'].includes(field) && new Set(branchFamilies.map(family => family.image_url)).size > 1,
         options: step.options.map(option => describeOption(field, option, { mapping, families: branchFamilies, catalogue })), onSelect: select });
@@ -163,10 +167,12 @@ export function createProductConfigurator(families, taxonomy, catalogue, mapping
     }
     markNextLockedStep(section);
     const url = new URL(location.href);
-    if (selected) url.searchParams.set('group', selected); else url.searchParams.delete('group');
+    if (selected && !singleGroup) url.searchParams.set('group', selected); else url.searchParams.delete('group');
     history.replaceState(null, '', url);
   });
-  reset.addEventListener('click', () => { stepStates.clear(); try { session?.removeItem(CONFIG_STATE_KEY); } catch {} engine.reset(); buttons.values().next().value?.focus(); });
+  reset.addEventListener('click', () => { stepStates.clear(); try { session?.removeItem(CONFIG_STATE_KEY); } catch {} engine.reset();
+    if (singleGroup) { engine.select('customer_category_id', singleGroup); section.querySelector('.configuration-step:not([hidden]) button')?.focus(); }
+    else buttons.values().next().value?.focus(); });
   window.addEventListener('hyperion:configure', event => { if (buttons.has(event.detail)) { select('customer_category_id', event.detail); scrollToElement(section, { focus: true }); } });
   return section;
 }

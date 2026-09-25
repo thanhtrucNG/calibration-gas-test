@@ -2,20 +2,12 @@
   "source": "data-source/calibration-gas.json",
   "groups": [
     {
-      "id": "thf-octane-mixtures",
-      "label_en": "THF / Octane mixtures",
-      "label_vi": "Hỗn hợp THF / Octane",
+      "id": "calibration-gas",
+      "label_en": "Calibration gas",
+      "label_vi": "Khí chuẩn",
       "order": 1,
-      "family_count": 3,
-      "sku_count": 6
-    },
-    {
-      "id": "multi-gas-mixtures",
-      "label_en": "Multi-gas detector mixtures",
-      "label_vi": "Hỗn hợp cho máy đo đa khí",
-      "order": 2,
-      "family_count": 2,
-      "sku_count": 2
+      "family_count": 5,
+      "sku_count": 8
     }
   ]
 }
