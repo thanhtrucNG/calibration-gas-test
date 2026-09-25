@@ -161,7 +161,7 @@ h1, h2, h3 { color: var(--hyperion-navy-950); }
 
 .hero .eyebrow { margin-bottom: 12px; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: .12em; }
 .hero .eyebrow-accent { margin-left: .4em; color: #ff8a73; }
-.hero h1 { max-width: 520px; color: #fff; font-size: 40px; font-weight: 700; line-height: 1.2; letter-spacing: 0; }
+.hero h1 { max-width: 500px; color: #fff; font-size: 40px; font-weight: 700; line-height: 1.2; letter-spacing: 0; }
 .hero-title-second { display: block; color: #c7ddea; white-space: normal; text-wrap: wrap; } /* break like the mockup: "…reliable / detectors." */
 .hero-intro { max-width: 520px; margin-top: 16px; color: rgb(255 255 255 / 88%); font-size: 20px; line-height: 1.5; text-wrap: pretty; }
 @media (max-width: 767.98px) {

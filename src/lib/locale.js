@@ -136,7 +136,7 @@ const vi = {
   'Product code': 'Mã sản phẩm',
   'Outright cylinder': 'Outright cylinder', 'Refillable cylinder': 'Refillable cylinder',
   'Skip to order': 'Chuyển đến phần đặt hàng',
-  'for accurate, reliable detectors.': 'cho máy đo khí chính xác, tin cậy.',
+  'for accurate, reliable detectors.': 'cho máy đo khí chính xác, tin cậy.', // no-break spaces keep word pairs together
   'Certified mixtures for bump testing, calibration and gas detector verification.': 'Hỗn hợp khí có chứng nhận để kiểm tra nhanh, hiệu chuẩn và kiểm định máy đo khí.',
   'mixtures available': 'hỗn hợp khí', 'cylinder sizes': 'dung tích bình', 'BS4 valve': 'Van BS4', 'supplied': 'đi kèm',
   '12 months': '12 tháng', 'stability / expiry': 'ổn định / hạn dùng', // no-break spaces: wrap only at the slash
