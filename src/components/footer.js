@@ -1,0 +1,74 @@
+import { element, icon } from '../lib/dom.js';
+import { language, t } from '../lib/locale.js';
+import { corporate } from '../data/corporate.js';
+import { productProfile } from '../lib/product-profile.js';
+
+export function createFooter() {
+  const footer = element('footer', 'site-footer');
+  const inner = element('div', 'container footer-inner');
+  const columns = element('div', 'footer-columns');
+
+  // Left: product name with "by DLV CORPORATION" on the same line, tax code below (Handypad footer standard).
+  const brand = element('div', 'footer-brand');
+  const title = element('h2', 'footer-brand-title', `${productProfile.brand} `);
+  title.append(element('span', 'footer-brand-secondary', `by ${corporate.legal_en}`));
+  const tax = element('p', 'footer-tax');
+  tax.append(
+    element('span', 'tax-label', `${t('Tax code')}:`),
+    document.createTextNode(' '),
+    element('span', 'tax-value', corporate.tax_code),
+  );
+  brand.append(title, tax);
+
+  const contact = element('section', 'footer-contact');
+  contact.id = 'contact';
+  contact.setAttribute('aria-labelledby', 'footer-contact-title');
+
+  const heading = element('h3', 'footer-heading', t('Contact'));
+  heading.id = 'footer-contact-title';
+
+  const digits = corporate.phone_href.replace(/\D/g, '');
+  const address = element('address', 'footer-contact-groups');
+  for (const [name, label, value, href] of [
+    ['pin', t('Address'), language === 'vi' ? corporate.address_vi : corporate.address, `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(corporate.address)}`],
+    ['phone', t('Phone / WhatsApp / Zalo'), corporate.phone, corporate.phone_href],
+    ['mail', t('Email'), corporate.email, `mailto:${corporate.email}`],
+  ]) {
+    const row = element('div', 'contact-group');
+    const body = element('div', 'contact-body');
+    body.append(element('span', 'sr-only', `${label}: `));
+    const detail = element('a', 'contact-value', value);
+    detail.href = href;
+    if (href.startsWith('https:')) { detail.target = '_blank'; detail.rel = 'noopener'; }
+    if (name === 'pin') {
+      // One line wherever it fits. Phones are too narrow for any address line, so there it breaks only
+      // between its natural parts — street / ward / city, country — and never inside one.
+      const parts = value.split(', ');
+      const lines = [`${parts[0]},`, `${parts[1]},`, parts.slice(2).join(', ')];
+      detail.replaceChildren(...lines.flatMap((text, i) => [...(i ? [document.createTextNode(' ')] : []), element('span', 'address-line', text)]));
+    }
+    body.append(detail);
+    if (name === 'phone') {
+      const chats = element('span', 'contact-chat-links');
+      for (const [text, url] of [['WhatsApp', `https://wa.me/${digits}`], ['Zalo', corporate.zalo_url]]) {
+        const chat = element('a', 'contact-chat-link', text);
+        chat.href = url; chat.target = '_blank'; chat.rel = 'noopener';
+        chat.setAttribute('aria-label', t(`Chat on ${text}`));
+        chats.append(chat);
+      }
+      body.append(chats);
+    }
+    row.append(icon(name), body);
+    address.append(row);
+  }
+
+  contact.append(heading, address);
+  columns.append(brand, contact);
+
+  inner.append(
+    columns,
+    element('p', 'footer-copyright', `© ${new Date().getFullYear()} DLV Corporation. ${t('All rights reserved.')}`),
+  );
+  footer.append(inner);
+  return footer;
+}

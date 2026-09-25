@@ -1,0 +1,57 @@
+{
+  "source": "Calibration Gas.xlsx (Sheet1, rows 2-9) + EN/VI display copy",
+  "usd_rate_vnd": 26000,
+  "usd_rate_note": "ESTIMATE: USD = VND / 26,000, rounded to whole dollars. Replace with official USD prices.",
+  "image_url": "./src/assets/products/calibration-gas/product.webp",
+  "categories": [
+    { "id": "thf-octane-mixtures", "label_en": "THF / Octane mixtures", "label_vi": "Hỗn hợp THF / Octane", "order": 1 },
+    { "id": "multi-gas-mixtures", "label_en": "Multi-gas detector mixtures", "label_vi": "Hỗn hợp cho máy đo đa khí", "order": 2 }
+  ],
+  "mixtures": [
+    { "id": "thf-0.5-oct-0.05", "category_id": "thf-octane-mixtures",
+      "label_en": "THF 0.5% · Octane 0.05%", "label_vi": "THF 0,5% · Octane 0,05%",
+      "detail_en": "Balance N₂ · 3 L or 10 L steel cylinder", "detail_vi": "Nền N₂ · bình thép 3 L hoặc 10 L" },
+    { "id": "thf-1.0-oct-0.1", "category_id": "thf-octane-mixtures",
+      "label_en": "THF 1.0% · Octane 0.1%", "label_vi": "THF 1,0% · Octane 0,1%",
+      "detail_en": "Balance N₂ · 3 L or 10 L steel cylinder", "detail_vi": "Nền N₂ · bình thép 3 L hoặc 10 L" },
+    { "id": "thf-1.5-oct-0.15", "category_id": "thf-octane-mixtures",
+      "label_en": "THF 1.5% · Octane 0.15%", "label_vi": "THF 1,5% · Octane 0,15%",
+      "detail_en": "Balance N₂ · 3 L or 10 L steel cylinder", "detail_vi": "Nền N₂ · bình thép 3 L hoặc 10 L" },
+    { "id": "mg-o2-18", "category_id": "multi-gas-mixtures",
+      "label_en": "O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2,500 ppm", "label_vi": "O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2.500 ppm",
+      "detail_en": "Balance N₂ · 8 L aluminium cylinder", "detail_vi": "Nền N₂ · bình nhôm 8 L" },
+    { "id": "mg-o2-20.9", "category_id": "multi-gas-mixtures",
+      "label_en": "O₂ 20.9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2.5%", "label_vi": "O₂ 20,9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2,5%",
+      "detail_en": "Balance N₂ · 8 L aluminium cylinder", "detail_vi": "Nền N₂ · bình nhôm 8 L" }
+  ],
+  "cylinders": {
+    "3L-steel": { "size": "3 L", "name_en": "3 L carbon steel cylinder", "name_vi": "bình thép carbon 3 L" },
+    "10L-steel": { "size": "10 L", "name_en": "10 L carbon steel cylinder", "name_vi": "bình thép carbon 10 L" },
+    "8L-aluminium": { "size": "8 L", "name_en": "8 L aluminium cylinder", "name_vi": "bình nhôm 8 L" }
+  },
+  "bases": {
+    "Outright": { "label_en": "Outright cylinder", "label_vi": "Bình mua đứt" },
+    "Refillable": { "label_en": "Refillable cylinder", "label_vi": "Bình nạp lại được" }
+  },
+  "skus": [
+    { "reference": "23.3.4.1.77", "mixture_id": "thf-0.5-oct-0.05", "cylinder": "3L-steel", "basis": "Outright", "price_vnd": 56000000,
+      "original_name": "CALIBRATION GAS MIXTURE IN NEW 03 liter W/C CARBON STEEL CYLINDER, C/W BS4 VALVE, 0.5% THF : 0.05% Octane : 99.45% N2\nFilling Pressure: 4.00 kg/cm2\nContent of gas: 12.00 liters\nPreparation Tolerance: +/-10%\nCertificate Accuracy: +/-2%\nStability: 12 Months\nCylinder Basis: Outright" },
+    { "reference": "23.3.4.1.76", "mixture_id": "thf-1.0-oct-0.1", "cylinder": "3L-steel", "basis": "Outright", "price_vnd": 56000000,
+      "original_name": "CALIBRATION GAS MIXTURE IN NEW 03 liter W/C CARBON STEEL CYLINDER, C/W BS4 VALVE, THF 1.0%, OCT 0.1% N2 BASED GAS.\nFilling Pressure: 4.00 kg/cm2\nContent of gas: 12.00 liters\nPreparation Tolerance: +/-10%\nCertificate Accuracy: +/-2%\nStability: 12 Months\nCylinder Basis: Outright" },
+    { "reference": "23.3.4.1.75", "mixture_id": "thf-1.5-oct-0.15", "cylinder": "3L-steel", "basis": "Outright", "price_vnd": 35000000,
+      "original_name": "CALIBRATION GAS MIXTURE IN NEW 03 liter W/C CARBON STEEL CYLINDER, C/W BS4 VALVE, THF 1.5%, OCT 0.15% N2 BASED GAS.\nFilling Pressure: 4.00 kg/cm2\nContent of gas: 12.00 liters\nPreparation Tolerance: +/-10%\nCertificate Accuracy: +/-2%\nStability: 12 Months\nCylinder Basis: Outright" },
+    { "reference": "23.3.4.1.80", "mixture_id": "thf-0.5-oct-0.05", "cylinder": "10L-steel", "basis": "Outright", "price_vnd": 49000000,
+      "original_name": "CALIBRATION GAS MIXTURE IN NEW 10 liter W/C CARBON STEEL CYLINDER, C/W BS4 VALVE, THF 0.5%, OCT 0.05% N2 BASED GAS.\nFilling Pressure: 4.00 kg/cm2\nContent of gas: 40.00 liters\nPreparation Tolerance: +/-10%\nCertificate Accuracy: +/-2%\nStability: 12 Months\nCylinder Basis: Outright" },
+    { "reference": "23.3.4.1.79", "mixture_id": "thf-1.0-oct-0.1", "cylinder": "10L-steel", "basis": "Outright", "price_vnd": 49000000,
+      "original_name": "CALIBRATION GAS MIXTURE IN NEW 10 liter W/C CARBON STEEL CYLINDER, C/W BS4 VALVE, THF 1.0%, OCT 0.1% N2 BASED GAS.Filling Pressure: 4.00 kg/cm2Content of gas: 12.00 litersPreparation Tolerance: +/-10%Certificate Accuracy: +/-2%Stability: 12 Months Cylinder Basis: Outright",
+      "source_note": "Content of gas says 12.00 liters; the other 10 L rows say 40.00 liters. Kept as supplied — please check." },
+    { "reference": "23.3.4.1.78", "mixture_id": "thf-1.5-oct-0.15", "cylinder": "10L-steel", "basis": "Outright", "price_vnd": 49000000,
+      "original_name": "CALIBRATION GAS MIXTURE IN NEW 10 liter W/C CARBON STEEL CYLINDER, C/W BS4 VALVE, THF1.5%,OCT 0.15% N2 BASED GAS.\nFilling Pressure: 4.00 kg/cm2\nContent of gas: 40.00 liters\nPreparation Tolerance: +/-10%\nCertificate Accuracy: +/-2%\nStability: 12 Months\nCylinder Basis: Outright" },
+    { "reference": "23.3.4.1.3287", "mixture_id": "mg-o2-18", "cylinder": "8L-aluminium", "basis": "Refillable", "price_vnd": 29400000,
+      "original_name": "CALIBRATION GAS MIXTURE IN NEW 08 liter COMES WITH ALUMINUM CYLINDER, BS4 VALVE. GAS MIXTURE: O2 18% VOL CO 100 ppm H2S 25 ppm CH4 50% LEL CO2 2500 PPM VOL Balance N2",
+      "ecommerce_description": "Refillable cylinder · Relativity: ±5% · Pressure 35 bar · Expiry: 12 months · Comes with Certificate of Analysis (COA)" },
+    { "reference": "23.3.4.1.3286", "mixture_id": "mg-o2-20.9", "cylinder": "8L-aluminium", "basis": "Refillable", "price_vnd": 29400000,
+      "original_name": "CALIBRATION GAS MIXTURE IN NEW 08 liter COMES WITH ALUMINUM CYLINDER, BS4 VALVE. GAS MIXTURE: O2 20.9% VOL CO 500 ppm H2S 50 ppm CH4 60% LEL CO2 2.5% VOL Balance N2",
+      "ecommerce_description": "Refillable cylinder · Relativity: ±5% · Pressure 35 bar · Expiry: 12 months · Comes with Certificate of Analysis (COA)" }
+  ]
+}

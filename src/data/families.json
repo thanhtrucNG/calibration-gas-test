@@ -1,0 +1,75 @@
+[
+  {
+    "id": "CG-thf-0.5-oct-0.05",
+    "product_family_id": "CG-thf-0.5-oct-0.05",
+    "customer_category_id": "thf-octane-mixtures",
+    "display_name_en": "Calibration gas THF 0.5% · Octane 0.05%, balance N₂",
+    "display_name_vi": "Khí chuẩn THF 0,5% · Octane 0,05%, nền N₂",
+    "impa_code": null,
+    "direction": "",
+    "dimensions_display": "3 L",
+    "sku_ids": [
+      "23.3.4.1.77",
+      "23.3.4.1.80"
+    ],
+    "image_url": "./src/assets/products/calibration-gas/product.webp"
+  },
+  {
+    "id": "CG-thf-1.0-oct-0.1",
+    "product_family_id": "CG-thf-1.0-oct-0.1",
+    "customer_category_id": "thf-octane-mixtures",
+    "display_name_en": "Calibration gas THF 1.0% · Octane 0.1%, balance N₂",
+    "display_name_vi": "Khí chuẩn THF 1,0% · Octane 0,1%, nền N₂",
+    "impa_code": null,
+    "direction": "",
+    "dimensions_display": "3 L",
+    "sku_ids": [
+      "23.3.4.1.76",
+      "23.3.4.1.79"
+    ],
+    "image_url": "./src/assets/products/calibration-gas/product.webp"
+  },
+  {
+    "id": "CG-thf-1.5-oct-0.15",
+    "product_family_id": "CG-thf-1.5-oct-0.15",
+    "customer_category_id": "thf-octane-mixtures",
+    "display_name_en": "Calibration gas THF 1.5% · Octane 0.15%, balance N₂",
+    "display_name_vi": "Khí chuẩn THF 1,5% · Octane 0,15%, nền N₂",
+    "impa_code": null,
+    "direction": "",
+    "dimensions_display": "3 L",
+    "sku_ids": [
+      "23.3.4.1.75",
+      "23.3.4.1.78"
+    ],
+    "image_url": "./src/assets/products/calibration-gas/product.webp"
+  },
+  {
+    "id": "CG-mg-o2-18",
+    "product_family_id": "CG-mg-o2-18",
+    "customer_category_id": "multi-gas-mixtures",
+    "display_name_en": "Calibration gas O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2,500 ppm, balance N₂",
+    "display_name_vi": "Khí chuẩn O₂ 18% · CO 100 ppm · H₂S 25 ppm · CH₄ 50% LEL · CO₂ 2.500 ppm, nền N₂",
+    "impa_code": null,
+    "direction": "",
+    "dimensions_display": "8 L",
+    "sku_ids": [
+      "23.3.4.1.3287"
+    ],
+    "image_url": "./src/assets/products/calibration-gas/product.webp"
+  },
+  {
+    "id": "CG-mg-o2-20.9",
+    "product_family_id": "CG-mg-o2-20.9",
+    "customer_category_id": "multi-gas-mixtures",
+    "display_name_en": "Calibration gas O₂ 20.9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2.5%, balance N₂",
+    "display_name_vi": "Khí chuẩn O₂ 20,9% · CO 500 ppm · H₂S 50 ppm · CH₄ 60% LEL · CO₂ 2,5%, nền N₂",
+    "impa_code": null,
+    "direction": "",
+    "dimensions_display": "8 L",
+    "sku_ids": [
+      "23.3.4.1.3286"
+    ],
+    "image_url": "./src/assets/products/calibration-gas/product.webp"
+  }
+]
