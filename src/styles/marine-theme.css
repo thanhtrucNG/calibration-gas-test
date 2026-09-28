@@ -117,7 +117,7 @@ h1, h2, h3 { color: var(--hyperion-navy-950); }
   background-size: cover;
   background-position: center;
 }
-/* With the photo (hero.webp, 2000 × 674; cylinders span 53.4–74.25% of its width, 25–92% of its height).
+/* With the photo (hero.webp, 2000 × 674; cylinders span 51.6–74.25% of its width, 23–92% of its height).
    ≥ 1280px — one zoomed photo, no fades. Its box is anchored so the cylinders' right edge sits 8px left of the
    gas card (the card is aligned with the content column = header edge), and it is made wide enough to cover
    the hero on both sides. background-position-x 74.25% keeps the cylinders' right edge at 74.25% of the box
@@ -137,7 +137,7 @@ h1, h2, h3 { color: var(--hyperion-navy-950); }
 @media (max-width: 1279.98px) {
   .hero-backdrop-photo { left: 0; right: 0; width: auto; transform: none; background-position: 45% 100%; }
 }
-@media (max-width: 1023.98px) { .hero-backdrop-photo { background-position: 40% 100%; } }
+@media (max-width: 1023.98px) { .hero-backdrop-photo { background-position: 35% 100%; } }
 .hero-backdrop::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(90deg, rgba(4,33,53,.86) 0%, rgba(4,33,53,.70) 38%, rgba(4,33,53,.30) 68%, rgba(4,33,53,.08) 100%);
